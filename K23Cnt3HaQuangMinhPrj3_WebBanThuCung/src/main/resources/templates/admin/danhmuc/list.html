@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Quản lý Khách Hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .container { max-width: 1200px; margin-top: 30px; }
+        .card { border: none; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.05); }
+        .table thead { background-color: #f1f3f5; }
+        .table th { border: none; font-size: 0.9rem; color: #666; text-transform: uppercase; }
+        .table td { vertical-align: middle; padding: 15px; border-bottom: 1px solid #eee; }
+        .btn-add { background-color: #5cb85c; color: white; border: none; font-weight: 600; }
+        .btn-add:hover { background-color: #4cae4c; color: white; }
+        .action-link { text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Quản lý Khách Hàng</h2>
+        <a th:href="@{/admin/khach-hang/create}" class="btn btn-add">Thêm mới</a>
+    </div>
 
+    <div class="card p-4">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ Tên</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th class="text-end">Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="kh : ${listKH}">
+                <td th:text="${kh.maKH}"></td> <td th:text="${kh.hoTen}"></td> <td th:text="${kh.sdt}"></td>
+                <td th:text="${kh.email}"></td>
+                <td th:text="${kh.username}"></td>
+                <td class="text-end">
+                    <a th:href="@{/admin/khach-hang/edit/{id}(id=${kh.maKH})}"
+                       style="text-decoration: none; color: #007bff;">Sửa</a>
+                    <span style="color: #ccc;">|</span>
+                    <a th:href="@{/admin/khach-hang/delete/{id}(id=${kh.maKH})}"
+                       style="text-decoration: none; color: #dc3545;"
+                       onclick="return confirm('Xóa khách hàng này?')">Xóa</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

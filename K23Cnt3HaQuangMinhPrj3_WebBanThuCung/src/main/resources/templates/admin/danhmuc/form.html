@@ -1,10 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Thông tin Khách Hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f7f6; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn-success { background-color: #28a745; border: none; padding: 10px 25px; }
+    </style>
 </head>
 <body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4">
+                <h3 class="mb-4 fw-bold text-center"
+                    th:text="${khachhang.maKH == null ? 'Thêm Khách Hàng Mới' : 'Cập Nhật Khách Hàng'}"></h3>
+
+                <form th:action="@{/admin/khach-hang/save}" th:object="${khachhang}" method="post">
+                    <input type="hidden" th:field="*{maKH}">
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Họ và Tên</label>
+                            <input type="text" th:field="*{hoTen}" class="form-control" placeholder="Nhập họ tên" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Số điện thoại</label>
+                            <input type="text" th:field="*{sdt}" class="form-control" placeholder="Nhập SĐT" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Địa chỉ Email</label>
+                        <input type="email" th:field="*{email}" class="form-control" placeholder="example@gmail.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Địa chỉ cư trú</label>
+                        <input type="text" th:field="*{diaChi}" class="form-control" placeholder="Số nhà, tên đường...">
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Tên đăng nhập</label>
+                            <input type="text" th:field="*{username}" class="form-control" required
+                                   th:readonly="${khachhang.maKH != null}">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Mật khẩu</label>
+                            <input type="password" th:field="*{password}" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="text-center border-top pt-3">
+                        <a th:href="@{/admin/khach-hang}" class="btn btn-outline-secondary me-2">Quay lại</a>
+                        <button type="submit" class="btn btn-success">Lưu khách hàng</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
