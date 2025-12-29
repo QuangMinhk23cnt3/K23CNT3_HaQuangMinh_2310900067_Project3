@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<!--Menu-->
+
+<div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2 class="logo">ADMIN</h2>
+        <nav>
+            <a href="/admin" class="active">Dashboard</a>
+            <a href="/admin/users">Users</a>
+            <a href="/admin/products">Products</a>
+            <a href="/admin/orders">Orders</a>
+            <a href="admin/category">Categories</a>
+            <a href="/logout" class="logout">Logout</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <header class="topbar">
+            <h1>Admin Dashboard</h1>
+            <span>Xin chào, <b>Minh</b></span>
+        </header>
+
+        <section class="cards">
+            <div class="card users">
+                <h3>👤 Users</h3>
+                <p>Quản lý người dùng</p>
+                <a href="/admin/users">Xem chi tiết</a>
+            </div>
+
+            <div class="card products">
+                <h3>📦 Products</h3>
+                <p>Quản lý sản phẩm</p>
+                <a href="/admin/products">Xem chi tiết</a>
+            </div>
+
+            <div class="card orders">
+                <h3>🧾 Orders</h3>
+                <p>Quản lý đơn hàng</p>
+                <a href="/admin/orders">Xem chi tiết</a>
+            </div>
+        </section>
+    </main>
+
+</div>
+
+</body>
+</html>

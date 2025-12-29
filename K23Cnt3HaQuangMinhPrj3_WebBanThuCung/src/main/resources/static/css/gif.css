@@ -1,0 +1,20 @@
+/* ===== CARD (sau này dùng cho bảng, form) ===== */
+.admin-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+.admin-corner-gif {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.admin-corner-gif img {
+    width: 200px;
+    opacity: 0.95;
+    pointer-events: none; /* KHÔNG che click */
+}

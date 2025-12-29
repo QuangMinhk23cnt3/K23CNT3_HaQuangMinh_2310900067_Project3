@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thêm Category</title>
+</head>
+<body>
+
+<h2>Thêm Category</h2>
+
+<form th:action="@{/admin/categories/add}" method="post" th:object="${category}">
+    <label>Tên:</label>
+    <input type="text" th:field="*{name}" required>
+
+    <br><br>
+
+    <label>Hoạt động:</label>
+    <input type="checkbox" th:field="*{status}">
+
+    <br><br>
+
+    <button type="submit">Lưu</button>
+</form>
+
+</body>
+</html>

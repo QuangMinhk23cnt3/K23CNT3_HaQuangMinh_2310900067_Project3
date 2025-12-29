@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý Users</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>QUẢN LÝ USERS</h1>
+
+<a th:href="@{/admin/users/add}">➕ Thêm user</a>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Enabled</th>
+        <th>Hành động</th>
+    </tr>
+
+    <tr th:each="u : ${users}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.username}"></td>
+        <td th:text="${u.email}"></td>
+        <td th:text="${u.role}"></td>
+        <td th:text="${u.enabled}"></td>
+        <td>
+            <a th:href="@{/admin/users/edit/{id}(id=${u.id})}">✏️</a> |
+            <a th:href="@{/admin/users/delete/{id}(id=${u.id})}"
+               onclick="return confirm('Xóa user này?')">🗑️</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/admin}"
+   style="padding:6px 12px; background:#2c3e50; color:white; text-decoration:none; border-radius:4px;">
+    ⬅ Quay Lai
+</a>
+
+<!-- ================= FORM ================= -->
+<div th:if="${user != null}">
+    <hr>
+    <h2 th:text="${user.id == null ? 'THÊM USER' : 'SỬA USER'}"></h2>
+
+    <form th:action="@{/admin/users/save}" method="post" th:object="${user}">
+        <input type="hidden" th:field="*{id}"/>
+
+        Username:<br>
+        <input type="text" th:field="*{username}" required><br><br>
+
+        Password:<br>
+        <input type="password" th:field="*{password}"
+               th:placeholder="${user.id != null ? 'Để trống nếu không đổi' : ''}">
+        <br><br>
+
+        Email:<br>
+        <input type="email" th:field="*{email}"><br><br>
+
+        Role:<br>
+        <select th:field="*{role}">
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+        </select><br><br>
+
+        Enabled:
+        <input type="checkbox" th:field="*{enabled}"><br><br>
+
+        <button type="submit">💾 Lưu</button>
+        <a th:href="@{/admin/users}">❌ Hủy</a>
+    </form>
+</div>
+
+</body>
+</html>

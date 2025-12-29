@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+
+        <!-- LOGO -->
+        <a href="/" class="logo">
+            🐾 HQM PetShop
+        </a>
+
+        <!-- MENU -->
+        <ul class="nav-menu">
+            <li><a href="/">Trang chủ</a></li>
+
+            <!-- DANH MỤC -->
+            <li class="dropdown">
+                <a href="#">Danh mục ▾</a>
+                <ul class="dropdown-menu">
+                    <li th:each="c : ${menuCategories}">
+                        <a th:href="@{/category/{id}(id=${c.id})}"
+                           th:text="${c.name}"></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li><a href="/about">Giới thiệu</a></li>
+            <li><a href="/contact">Liên hệ</a></li>
+        </ul>
+
+        <!-- USER -->
+        <div class="nav-user">
+            <span th:if="${#authorization.expression('isAuthenticated()')}">
+                Xin chào 👋 <b th:text="${#authentication.name}"></b>
+                |
+                <a href="/logout">Đăng xuất</a>
+            </span>
+
+            <span th:if="${#authorization.expression('!isAuthenticated()')}">
+                <a href="/login">Đăng nhập</a> |
+                <a href="/register">Đăng ký</a>
+            </span>
+        </div>
+
+    </div>
+</nav>
+
+</body>
+</html>

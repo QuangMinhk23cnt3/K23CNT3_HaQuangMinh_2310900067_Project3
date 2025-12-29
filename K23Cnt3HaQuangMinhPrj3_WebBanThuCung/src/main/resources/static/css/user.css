@@ -1,0 +1,277 @@
+/* ===== SLIDESHOW ===== */
+.slideshow-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 420px;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: #eee;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+}
+
+/* Slide */
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Slide đang hiển thị */
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* ===== OVERLAY LÀM MỜ ẢNH ===== */
+.slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35); /* độ mờ */
+    z-index: 1;
+}
+
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+}
+
+
+/* ===== TEXT TRONG SLIDE ===== */
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    background: rgba(0, 0, 0, 0.4);
+    padding: 22px 36px;
+    border-radius: 16px;
+    color: #fff;
+
+    max-width: 80%;
+}
+
+/* Tiêu đề */
+.slide-text h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Slogan */
+.slide-text p {
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* ===== SLIDESHOW BUTTON ===== */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.55);
+    color: #fff;
+    border: none;
+    font-size: 28px;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 2;
+}
+
+.slide-btn:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Trái */
+.slide-btn.prev {
+    left: 16px;
+}
+
+/* Phải */
+.slide-btn.next {
+    right: 16px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .slideshow-container {
+        height: 260px;
+    }
+
+    .slide-text h2 {
+        font-size: 22px;
+    }
+
+    .slide-text p {
+        font-size: 14px;
+    }
+}
+
+/* ===== SEARCH BAR ===== */
+.search-bar {
+    max-width: 700px;
+    margin: 30px auto 40px; /* đẩy xuống, không dính navbar */
+    padding: 0 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 2px solid #1abc9c;
+    outline: none;
+    transition: 0.25s;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 0 4px rgba(26, 188, 156, 0.2);
+}
+
+
+/* ================= PRODUCT GRID ================= */
+.product-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 0 20px;
+}
+
+.product-item {
+    background-color: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
+
+.product-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.product-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Tên sản phẩm */
+.product-name {
+    padding: 14px 16px 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Giá */
+.product-price {
+    padding: 0 16px 18px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e74c3c;
+}
+
+/* ================= PRODUCT SECTION ================= */
+.product-section {
+    background-color: #f3f5f7;
+    padding: 40px 0 60px;
+}
+
+/* Giữ nội dung ở giữa màn hình */
+.product-section > * {
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* Tiêu đề */
+.product-section h2 {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* ===== NAVBAR ===== */
+.main-header {
+    background-color: #1abc9c;
+    padding: 16px 60px;
+    color: #fff;
+}
+
+/* Logo + nav cùng hàng */
+.main-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Thanh menu */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Link menu */
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+}
+
+/* Hiệu ứng gạch chân */
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Login bên phải */
+.user-status {
+    margin-left: auto;
+    font-size: 14px;
+}
+
+.user-status a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.user-status a:hover {
+    text-decoration: underline;
+}
+
+
+
+

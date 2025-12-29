@@ -1,0 +1,200 @@
+/* ================= FOOTER ================= */
+.main-footer {
+    background-color: #1abc9c; /* xanh ngọc */
+    color: #fff;
+    margin-top: 60px;
+    font-size: 14px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer-column p {
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.footer-column ul li a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Dòng dưới cùng */
+.footer-bottom {
+    text-align: center;
+    padding: 12px 10px;
+    background-color: rgba(0,0,0,0.1);
+    font-size: 13px;
+}
+/* ================= PET REWARDS ================= */
+.pet-rewards {
+    background-color: #fff7ee;
+    padding: 70px 20px;
+}
+
+.pet-rewards-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Hình */
+.pet-rewards-image img {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Nội dung */
+.pet-rewards-content h4 {
+    color: #1abc9c;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.pet-rewards-content h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.pet-rewards-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Button */
+.pet-rewards-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 30px;
+    border: 2px solid #1abc9c;
+    color: #1abc9c;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.pet-rewards-btn:hover {
+    background-color: #1abc9c;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pet-rewards-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .pet-rewards-image img {
+        margin: auto;
+    }
+}
+
+/* ================= PET STORE NEAR ================= */
+.pet-store-near {
+    background-color: #fbf7ef;
+    padding: 80px 0;
+}
+
+.pet-store-container {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+}
+
+/* TEXT */
+.pet-store-content {
+    padding: 0 80px;
+}
+
+.pet-store-content h2 {
+    font-size: 44px;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+.pet-store-content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 36px;
+}
+
+/* BUTTON */
+.pet-store-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 30px;
+    border: 2px solid #333;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.pet-store-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* IMAGE */
+.pet-store-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .pet-store-container {
+        grid-template-columns: 1fr;
+    }
+
+    .pet-store-content {
+        padding: 40px 30px;
+        text-align: center;
+    }
+
+    .pet-store-image img {
+        height: 300px;
+    }
+}

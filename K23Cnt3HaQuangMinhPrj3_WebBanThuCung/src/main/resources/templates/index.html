@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Thu Cung</title>
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+<body>
+
+<header class="main-header">
+    <h1>Shop Thu Cung</h1>
+    <nav class="main-nav">
+        <a th:href="@{/}">Trang chủ</a>
+        <a th:href="@{/products}">Sản phẩm</a>
+        <a th:href="@{/cart}">Giỏ hàng</a>
+
+        <span style="margin: 0 10px;"></span>
+        <span class="user-status">
+            <th:block th:if="${session.user != null}">
+                Xin chào, <span th:text="${session.user.hoTen}"></span>
+                (<span th:text="${session.user.username}"></span>)
+                <a th:href="@{/logout}">Đăng xuất</a>
+            </th:block>
+            <th:block th:unless="${session.user != null}">
+                <a th:href="@{/login}">Đăng nhập</a> |
+                <a th:href="@{/register}">Đăng ký</a>
+            </th:block>
+        </span>
+    </nav>
+</header>
+
+    <!-- ======== SEARCH BAR ======== -->
+        <div class="search-bar">
+            <input type="text" id="searchInput"
+                placeholder="🔍 Tìm kiếm sản phẩm..."
+                onkeyup="searchProduct()">
+        </div>
+    <!-- =========================== -->
+
+<!-- ================= SLIDESHOW ================= -->
+<div class="slideshow-container">
+
+    <div class="slide active">
+        <img src="/uploads/banner_1.jpg">
+        <div class="slide-text">
+            <h2>Chào mừng đến với HQM PetShop</h2>
+            <p>Thiên đường dành cho thú cưng của bạn</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <img src="/uploads/banner_2.jpg">
+        <div class="slide-text">
+            <h2>Thú cưng khỏe mạnh – Chủ nuôi an tâm</h2>
+            <p>Sản phẩm chất lượng – Giá cả hợp lý</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <img src="/uploads/banner_3.jpg">
+        <div class="slide-text">
+            <h2>Yêu thương thú cưng như gia đình</h2>
+            <p>Chăm sóc trọn đời – Đồng hành cùng bạn</p>
+        </div>
+    </div>
+    <section class="pet-rewards">
+        <div class="pet-rewards-container">
+
+            <!-- BÊN TRÁI: HÌNH -->
+            <div class="pet-rewards-image">
+                <img src="/uploads/pet_promo.png" alt="HQM Pet Rewards">
+            </div>
+
+            <!-- BÊN PHẢI: NỘI DUNG -->
+            <div class="pet-rewards-content">
+                <h4>HQM PET REWARDS</h4>
+                <h2>KHÁM PHÁ ƯU ĐÃI DÀNH RIÊNG CHO THÚ CƯNG</h2>
+                <p>
+                    Tích điểm mỗi lần mua sắm, nhận quà cho boss yêu.
+                    Ưu đãi hấp dẫn – Chăm sóc trọn vẹn.
+                </p>
+
+                <a href="/rewards" class="pet-rewards-btn">
+                    THAM GIA NGAY
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<!-- ============================================ -->
+
+<section class="product-section">
+    <h2>Sản phẩm nổi bật</h2>
+
+
+
+    <div th:if="${param.logoutSuccess}" style="color: green; text-align: center; padding: 10px;">
+        Đăng xuất thành công!
+    </div>
+
+    <div th:if="${success}" style="color: green; text-align: center; padding: 10px;">
+        <span th:text="${success}"></span>
+    </div>
+
+    <div class="product-grid-container">
+
+        <div class="product-item">
+            <a href="/products/1">
+                <img src="/uploads/cho_poodle.jpg" alt="Chó Poodle"/>
+                <div class="product-name">Chó Poodle thuần chủng</div>
+                <div class="product-price">
+                    15,000,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-item">
+            <a href="/products/2">
+                <img src="/uploads/conchodungo.jpg" alt="Chó Corgi"/>
+                <div class="product-name">Chó Độ Cao Bằng</div>
+                <div class="product-price">
+                    12,000,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-item">
+            <a href="/products/3">
+                <img src="/uploads/meo_anh_long_ngan.jpg" alt="Mèo Anh lông ngắn"/>
+                <div class="product-name">Mèo Anh lông ngắn</div>
+                <div class="product-price">
+                    10,000,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-item">
+            <a href="/products/4">
+                <img src="/uploads/meo_tai_cup.jpg" alt="Mèo Tai Cup"/>
+                <div class="product-name">Mèo Tai Cup</div>
+                <div class="product-price">
+                    9,000,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-item">
+            <a href="/products/5">
+                <img src="/uploads/thucan_cho.jpg" alt="Thuc An Cho"/>
+                <div class="product-name">Thuc An Cho</div>
+                <div class="product-price">
+                    200,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-item">
+            <a href="/products/6">
+                <img src="/uploads/thucan_meo.jpg" alt="Thuc An Meo"/>
+                <div class="product-name">Thuc An Meo</div>
+                <div class="product-price">
+                    200,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-item">
+            <a href="/products/7">
+                <img src="/uploads/vong_co.jpg" alt="Vong Co Thu Cung"/>
+                <div class="product-name">Vong Co Thu Cung</div>
+                <div class="product-price">
+                    150,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="product-item">
+            <a href="/products/8">
+                <img src="/uploads/khay_cat.jpg" alt="Cat Cho Meo"/>
+                <div class="product-name">Cat Cho Meo</div>
+                <div class="product-price">
+                    300,000 <span style="text-decoration: underline;">₫</span>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</section>
+<section class="pet-rewards">
+    <div class="pet-rewards-container">
+
+        <!-- BÊN TRÁI: HÌNH -->
+        <div class="pet-rewards-image">
+            <img src="/uploads/pet_promo.png" alt="HQM Pet Rewards">
+        </div>
+
+        <!-- BÊN PHẢI: NỘI DUNG -->
+        <div class="pet-rewards-content">
+            <h4>HQM PET REWARDS</h4>
+            <h2>KHÁM PHÁ ƯU ĐÃI DÀNH RIÊNG CHO THÚ CƯNG</h2>
+            <p>
+                Tích điểm mỗi lần mua sắm, nhận quà cho boss yêu.
+                Ưu đãi hấp dẫn – Chăm sóc trọn vẹn.
+            </p>
+
+            <a href="/rewards" class="pet-rewards-btn">
+                THAM GIA NGAY
+            </a>
+        </div>
+
+    </div>
+</section>
+<section class="pet-store-near">
+    <div class="pet-store-container">
+
+        <!-- BÊN TRÁI: TEXT -->
+        <div class="pet-store-content">
+            <h2>Cửa Hàng PetShop Gần Bạn</h2>
+            <p>Bạn ở đâu, HQM PetShop ở đó!</p>
+
+            <a href="/stores" class="pet-store-btn">
+                KHÁM PHÁ NGAY
+            </a>
+        </div>
+
+        <!-- BÊN PHẢI: HÌNH -->
+        <div class="pet-store-image">
+            <img src="/uploads/pet_store.jpg" alt="Cửa hàng thú cưng">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= JS ================= -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+    const slideInterval = 4000; // 4 giây
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Hiển thị slide đầu
+    showSlide(currentSlide);
+
+    // TỰ ĐỘNG CHẠY
+    setInterval(nextSlide, slideInterval);
+
+});
+
+    // Search
+    function searchProduct() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let items = document.getElementsByClassName("product-item");
+
+        for (let i = 0; i < items.length; i++) {
+            let name = items[i].getElementsByClassName("product-name")[0]
+                .innerText.toLowerCase();
+            items[i].style.display = name.includes(input) ? "block" : "none";
+        }
+    }
+</script>
+<!-- ===================================== -->
+
+    <footer class="main-footer">
+        <div class="footer-container">
+
+            <div class="footer-column">
+                <h3>HQM PetShop</h3>
+                <p>
+                    Chuyên cung cấp thú cưng, thức ăn và phụ kiện chất lượng cao.
+                    Đồng hành cùng bạn trong hành trình chăm sóc thú cưng.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/products">Sản phẩm</a></li>
+                    <li><a href="/cart">Giỏ hàng</a></li>
+                    <li><a href="/login">Đăng nhập</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Liên hệ</h4>
+                <p>📍 Thanh Hoa, Viet Nam</p>
+                <p>📞 018 036 3636</p>
+                <p>✉ hqmpetshop@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 HQM PetShop. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

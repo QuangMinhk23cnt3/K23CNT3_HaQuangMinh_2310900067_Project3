@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/css/gif.css}">
+    <link rel="stylesheet" th:href="@{/css/kcj.css}">
+</head>
+<body>
+
+<header class="admin-header">
+    <h1>Admin Dashboard</h1>
+</header>
+
+<div class="admin-main-content">
+
+    <nav class="admin-sidebar">
+        <ul>
+            <li><a th:href="@{/admin/products}">🐶Quản lý sản phẩm</a></li>
+            <li><a th:href="@{/admin/categories}">👤Quản lý khach hang</a></li>
+            <li><a th:href="@{/admin/orders}">📦Đơn hàng</a></li>
+
+            <li class="logout-link"><a th:href="@{/admin/logout}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="admin-content-area">
+
+        <!-- GIỮ NGUYÊN -->
+        <h2>Chào mừng, Admin!</h2>
+        <p>Sử dụng thanh điều hướng bên trái để quản lý cửa hàng.</p>
+
+        <!-- ================= PHẦN THÊM BẮT ĐẦU ================= -->
+
+        <!-- Banner chào mừng -->
+        <div class="admin-welcome-banner">
+            <h3>🐾 PetShop Admin Center</h3>
+            <p>Quản lý cửa hàng thú cưng nhanh chóng và hiệu quả</p>
+        </div>
+
+        <!-- Thống kê nhanh -->
+        <div class="admin-stats">
+            <div class="stat-box">
+                <h4>🐶 Sản phẩm</h4>
+                <p>120+</p>
+            </div>
+            <div class="stat-box">
+                <h4>📦 Đơn hàng</h4>
+                <p>45</p>
+            </div>
+            <div class="stat-box">
+                <h4>👤 Khách hàng</h4>
+                <p>300+</p>
+            </div>
+            <div class="stat-box">
+                <h4>💰 Doanh thu</h4>
+                <p>120M ₫</p>
+            </div>
+        </div>
+
+        <!-- Quick action -->
+        <div class="admin-quick-actions">
+            <h3>⚡ Thao tác nhanh</h3>
+            <a th:href="@{/admin/products/create}" class="quick-btn">➕ Thêm sản phẩm</a>
+            <a th:href="@{/admin/categories/create}" class="quick-btn">📂 Thêm danh mục</a>
+            <a th:href="@{/admin/orders}" class="quick-btn">📋 Xem đơn hàng</a>
+        </div>
+
+        <!-- Thông báo -->
+        <div class="admin-notifications">
+            <h3>🔔 Thông báo hệ thống</h3>
+            <ul>
+                <li>✔ Có 3 đơn hàng mới hôm nay</li>
+                <li>⚠ 5 sản phẩm sắp hết hàng</li>
+                <li>📢 Khuyến mãi cuối tuần đang hoạt động</li>
+            </ul>
+        </div>
+
+        <!-- ================= PHẦN THÊM KẾT THÚC ================= -->
+
+    </div>
+</div>
+
+<!-- GIF trang trí góc dưới phải (GIỮ NGUYÊN) -->
+<div class="admin-corner-gif">
+    <img src="https://media1.tenor.com/m/z-mrjZu-ff8AAAAC/cat.gif" alt="Admin Pet">
+</div>
+
+</body>
+</html>
